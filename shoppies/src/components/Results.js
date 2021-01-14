@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
-
 const Results = (props) => {
-  const { movies, nominateHandler, savedList } = props;
+  const { movies, nominateHandler, nominated } = props;
 
   return (
     <>
@@ -22,8 +20,8 @@ const Results = (props) => {
               </p>
               <button
                 className="px-4 py-2 m-4"
-                disabled={!!savedList[info.imdbID]}
-                onClick={() => nominateHandler(info)}
+                disabled={!!nominated[info.imdbID]}
+                onClick={(e) => nominateHandler(e, info)}
               >
                 Nominate
               </button>
