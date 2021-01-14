@@ -3,7 +3,7 @@ const Saved = (props) => {
 
   return (
     <>
-      <section className="text-center flex flex-col row-span-1">
+      <section className="text-center flex flex-col p-5 row-span-1">
         <h1>Nomination List</h1>
         <div className="relative pt-1">
           <div className="flex mb-2 items-center justify-between">
@@ -29,11 +29,7 @@ const Saved = (props) => {
               className="flex flex-col items-center justify-between rounded-t-lg shadow-lg rounded-lg text-sm w-1/5	m-4"
             >
               <h3>{movie[1]}</h3>
-              <button
-                className="px-4 py-2 m-4"
-                onClick={(e) => deleteHandler(e)}
-                value={movie[0]}
-              >
+              <button onClick={(e) => deleteHandler(e)} value={movie[0]}>
                 Remove
               </button>
             </li>

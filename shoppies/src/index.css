@@ -17,6 +17,8 @@
     @apply text-white;
     @apply rounded;
     @apply font-medium;
+    @apply p-1;
+    @apply m-2;
     @apply border;
   }
   button:hover {
