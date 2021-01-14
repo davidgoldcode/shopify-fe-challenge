@@ -1,0 +1,31 @@
+@tailwind base;
+
+@layer base {
+  h1 {
+    @apply text-2xl;
+    @apply font-bold;
+  }
+  h3 {
+    @apply text-lg;
+    @apply font-bold;
+  }
+  div {
+    @apply m-3;
+  }
+  button {
+    @apply bg-red-400;
+    @apply text-white;
+    @apply rounded;
+    @apply font-medium;
+    @apply border;
+  }
+  button:hover {
+    @apply bg-red-600;
+  }
+  button:disabled {
+    @apply opacity-50;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
