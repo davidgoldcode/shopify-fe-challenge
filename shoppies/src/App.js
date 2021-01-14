@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useDebounce from "./utils/useDebounce";
 import useFetch from "./utils/useFetch";
 import useLocalstorage from "./utils/useLocalStorage";
@@ -13,8 +13,8 @@ function App() {
     count: 0,
     full: false,
     query: "",
-    searchResults: [],
   });
+  const [results, setResults] = useState([]);
 
   // Debounce the search term so we're not constantly calling
   const debouncedQuery = useDebounce(data.query, 500);
@@ -23,10 +23,7 @@ function App() {
   const { status, movies } = useFetch(debouncedQuery);
 
   useEffect(() => {
-    setData({
-      ...data,
-      searchResults: movies,
-    });
+    setResults(movies);
   }, [movies]);
 
   const changeHandler = (e) => {
@@ -39,7 +36,8 @@ function App() {
     });
   };
 
-  const nominateHandler = (info) => {
+  const nominateHandler = (e, info) => {
+    e.preventDefault();
     const { Title: title, imdbID: id } = info;
 
     if (!data.nominated.hasOwnProperty(id) && data.count < 5) {
@@ -83,11 +81,15 @@ function App() {
       />
 
       <div className="grid grid-rows-6">
-        <Saved savedList={data.nominated} deleteHandler={deleteHandler} />
+        <Saved
+          nominated={data.nominated}
+          deleteHandler={deleteHandler}
+          count={data.count}
+        />
         <Results
-          movies={data.searchResults}
+          movies={results}
           nominateHandler={nominateHandler}
-          savedList={data.nominated}
+          nominated={data.nominated}
         />
       </div>
     </div>
