@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 const Results = (props) => {
   const { movies, nominateHandler, nominated } = props;
 
