@@ -7,6 +7,11 @@ import Results from "./components/Results";
 import Saved from "./components/Saved";
 import Search from "./components/Search";
 
+console.log(
+  `%c 💛 💚 💙 💜 🧡 Hi Shopify team 🧡 💜 💙 💚 💛`,
+  "color: blue; "
+);
+
 function App() {
   const [data, setData] = useLocalstorage("data", {
     nominated: {},
